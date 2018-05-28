@@ -156,10 +156,15 @@ public class VirtualPetShelterApp {
 				VirtualPet curePet = myPetShelter.getPet(curePetName);
 
 				if (curePet.getSickness() == true) {
-					curePet.giveMedicine();
-					System.out.println("Thank you for giving " + curePetName + " medicine!");
-					System.out.println(curePetName + " is feeling much better!");
-					System.out.println();
+					if (curePet.getRandomizedAction() < 3) {
+						System.out.println(curePetName + " BITES!");
+						System.out.println();
+					} else {
+						curePet.giveMedicine();
+						System.out.println("Thank you for giving " + curePetName + " medicine!");
+						System.out.println(curePetName + " is feeling much better!");
+						System.out.println();
+					}
 				} else {
 					System.out.println(curePetName + " is feeling fine and does not need medicine.");
 					System.out.println();

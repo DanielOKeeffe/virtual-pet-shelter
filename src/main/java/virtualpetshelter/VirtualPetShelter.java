@@ -44,15 +44,16 @@ public class VirtualPetShelter {
 	public void remove(VirtualPet pet) {
 		pets.remove(pet.getName());
 	}
-	
+
 	public void displayAllPets() {
 		System.out.println("Name" + "\t\t" + "Hunger" + "\t" + "Thirst" + "\t" + "Boredom");
 		Collection<VirtualPet> displayPets = pets.values();
 		for (VirtualPet pet : displayPets) {
-			System.out.println(pet.getName() + "\t\t" + pet.getHunger() + "\t" + pet.getThirst() + "\t" + pet.getBoredom());
+			System.out.println(
+					pet.getName() + "\t\t" + pet.getHunger() + "\t" + pet.getThirst() + "\t" + pet.getBoredom());
 		}
 	}
-	
+
 	public void displayAllPetDescriptions() {
 		System.out.println("Name" + "\t\t" + "Description");
 		Collection<VirtualPet> displayPets = pets.values();
@@ -60,7 +61,7 @@ public class VirtualPetShelter {
 			System.out.println(pet.getName() + "\t\t" + pet.getDescription());
 		}
 	}
-	
+
 	public boolean checkPetName(String enteredName) {
 		Collection<VirtualPet> petNames = pets.values();
 		for (VirtualPet pet : petNames) {
@@ -70,12 +71,14 @@ public class VirtualPetShelter {
 		}
 		return false;
 	}
-	
+
 	public void havoc() {
 		Collection<VirtualPet> allPets = pets.values();
 		for (VirtualPet pet : allPets) {
 			pet.randomizeAction();
-			if (pet.getRandomizedAction() < 34) {
+			if (pet.getRandomizedAction() < 3) {
+				System.out.println(pet.getName() + " BITES!");
+			} else if (pet.getRandomizedAction() >= 3 && pet.getRandomizedAction() < 34) {
 				System.out.println(pet.getName() + " decides to perform DEATHROLL!");
 				pet.play(40);
 			} else if (pet.getRandomizedAction() > 34 && pet.getRandomizedAction() < 67) {
