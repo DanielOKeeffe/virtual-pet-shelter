@@ -11,8 +11,9 @@ public class VirtualPet {
 	private boolean freeWill;
 	private double randomizedFreeWill;
 	private String petDescription;
+	private double randomizedAction;
 
-	public VirtualPet(String petName, int hunger, int thirst, int boredom, boolean sickness, boolean freeWill, String petDescription) {
+	public VirtualPet(String petName, int hunger, int thirst, int boredom, boolean sickness, boolean freeWill, String petDescription, double randomizedAction) {
 		this.petName = petName;
 		this.hunger = hunger;
 		this.thirst = thirst;
@@ -20,6 +21,7 @@ public class VirtualPet {
 		this.sickness = sickness;
 		this.freeWill = freeWill;
 		this.petDescription = petDescription;
+		this.randomizedAction = randomizedAction;
 	}
 
 	public VirtualPet(String petName, String petDescription) {
@@ -30,6 +32,7 @@ public class VirtualPet {
 		this.sickness = false;
 		this.freeWill = false;
 		this.petDescription = petDescription;
+		this.randomizedAction = 50;
 	}
 
 	public int getHunger() {
@@ -86,6 +89,7 @@ public class VirtualPet {
 		}
 		randomizeSickness();
 		randomizeFreeWill();
+		randomizeAction();
 	}
 
 	public boolean getSickness() {
@@ -136,6 +140,14 @@ public class VirtualPet {
 
 	public String getDescription() {
 		return petDescription;
+	}
+	
+	public void randomizeAction() {
+		randomizedAction = Math.random() * 100;
+	}
+	
+	public double getRandomizedAction() {
+		return randomizedAction;
 	}
 
 }

@@ -48,7 +48,8 @@ public class VirtualPetShelterApp {
 			System.out.println("4. Adopt a pet");
 			System.out.println("5. Admit a pet");
 			System.out.println("6. Give medicine to a pet");
-			System.out.println("7. Leave the shelter");
+			System.out.println("7. Release all of the pets!");
+			System.out.println("8. Leave the shelter");
 			choice = input.nextLine();
 
 			if (choice.equals("1")) {
@@ -66,6 +67,14 @@ public class VirtualPetShelterApp {
 				System.out.println();
 				myPetShelter.displayAllPetDescriptions();
 				String playChoice = input.nextLine();
+
+				while (myPetShelter.checkPetName(playChoice) == false) {
+					if (myPetShelter.checkPetName(playChoice) == false) {
+						System.out.println("There is no crocodile by that name in the shelter.");
+						System.out.println("Please enter a new name.");
+						playChoice = input.nextLine();
+					}
+				}
 				VirtualPet playingPet = myPetShelter.getPet(playChoice);
 				System.out.println("How long would you like to play with " + playChoice + "?");
 				int playTime = input.nextInt();
@@ -83,9 +92,15 @@ public class VirtualPetShelterApp {
 						System.out.println(playChoice + " is so happy to play with you!");
 						System.out.println();
 					} else {
-						System.out.println(playChoice + " growls at you and goes to get a snack instead.");
-						System.out.println();
-						playingPet.feed(25);
+						if (playingPet.getRandomizedAction() < 50) {
+							System.out.println(playChoice + " growls at you and goes to get a snack instead.");
+							System.out.println();
+							playingPet.feed(25);
+						} else if (playingPet.getRandomizedAction() >= 50) {
+							System.out.println(playChoice + " hisses loudly and goes to get a drink instead.");
+							System.out.println();
+							playingPet.water(25);
+						}
 					}
 				}
 
@@ -97,6 +112,14 @@ public class VirtualPetShelterApp {
 					System.out.println("Which pet would you like to adopt?");
 					myPetShelter.displayAllPetDescriptions();
 					String adoptionChoice = input.nextLine();
+
+					while (myPetShelter.checkPetName(adoptionChoice) == false) {
+						if (myPetShelter.checkPetName(adoptionChoice) == false) {
+							System.out.println("There is no crocodile by that name in the shelter.");
+							System.out.println("Please enter a new name.");
+							adoptionChoice = input.nextLine();
+						}
+					}
 					VirtualPet adoptionPet = myPetShelter.getPet(adoptionChoice);
 					myPetShelter.remove(adoptionPet);
 					System.out.println("You have chosen to adopt " + adoptionChoice + ".");
@@ -122,6 +145,14 @@ public class VirtualPetShelterApp {
 				System.out.println();
 				myPetShelter.displayAllPetDescriptions();
 				String curePetName = input.nextLine();
+
+				while (myPetShelter.checkPetName(curePetName) == false) {
+					if (myPetShelter.checkPetName(curePetName) == false) {
+						System.out.println("There is no crocodile by that name in the shelter.");
+						System.out.println("Please enter a new name.");
+						curePetName = input.nextLine();
+					}
+				}
 				VirtualPet curePet = myPetShelter.getPet(curePetName);
 
 				if (curePet.getSickness() == true) {
@@ -134,10 +165,28 @@ public class VirtualPetShelterApp {
 					System.out.println();
 				}
 
-			}
-		} while (!choice.equals("7"));
+			} else if (choice.equals("7")) {
+				System.out.println("You have chosen to release all pets!");
+				String endHavok = "";
+				while (!endHavok.equalsIgnoreCase("y")) {
+					myPetShelter.havok();
+					System.out.println();
+					System.out.println("Would you like to put the pets away (\"y\"/\"n\")?");
+					endHavok = input.nextLine();
+				}
 
-		System.out.println("Thank you for visiting the friendly crocodile rescue shelter! Please come back soon!");
+			} else if (choice.equals("8")) {
+				System.out.println(
+						"Thank you for visiting the friendly crocodile rescue shelter! Please come back soon!");
+				System.exit(0);
+
+			} else {
+				System.out.println("I do not understand your choice, please enter a new choice.");
+			}
+
+		} while (!choice.equals("8"));
+
+		input.close();
 	}
 
 }

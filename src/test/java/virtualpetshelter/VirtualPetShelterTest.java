@@ -22,27 +22,27 @@ public class VirtualPetShelterTest {
 	@Before
 	public void setUp() {
 		underTest = new VirtualPetShelter();
-		pet1 = new VirtualPet("Julius", 0, 0, 0, false, false, "Loves to play!");
-		pet2 = new VirtualPet("Trevor", 0, 0, 0, false, false, "Is a little shy.");
+		pet1 = new VirtualPet("Julius", 0, 0, 0, false, false, "Loves to play!", 0);
+		pet2 = new VirtualPet("Trevor", 0, 0, 0, false, false, "Is a little shy.", 0);
 	}
 
 	@Test
 	public void shouldHaveHungerOf50() {
-		VirtualPet underTest = new VirtualPet("", 50, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 50, 0, 0, false, false, "", 0);
 		int check = underTest.getHunger();
 		assertEquals(check, 50);
 	}
 
 	@Test
 	public void shouldHaveHungerOf100() {
-		VirtualPet underTest = new VirtualPet("", 100, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 100, 0, 0, false, false, "", 0);
 		int check = underTest.getHunger();
 		assertEquals(check, 100);
 	}
 
 	@Test
 	public void shouldHaveHungerOf25AfterFeeding() {
-		VirtualPet underTest = new VirtualPet("", 50, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 50, 0, 0, false, false, "", 0);
 		underTest.feed(25);
 		int check = underTest.getHunger();
 		assertEquals(check, 25);
@@ -50,7 +50,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldHaveHungerOf0AfterFeeding25() {
-		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "", 0);
 		underTest.feed(25);
 		int check = underTest.getHunger();
 		assertEquals(check, 0);
@@ -58,14 +58,14 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldHaveThirstOf100() {
-		VirtualPet underTest = new VirtualPet("", 100, 100, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 100, 100, 0, false, false, "", 0);
 		int check = underTest.getThirst();
 		assertEquals(check, 100);
 	}
 
 	@Test
 	public void shouldHaveThirstOf25AfterWatering25() {
-		VirtualPet underTest = new VirtualPet("", 100, 50, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 100, 50, 0, false, false, "", 0);
 		underTest.water(25);
 		int check = underTest.getThirst();
 		assertEquals(check, 25);
@@ -73,7 +73,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shoulHaveThirstOf0AfterWatering25() {
-		VirtualPet underTest = new VirtualPet("", 100, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 100, 0, 0, false, false, "", 0);
 		underTest.water(25);
 		int check = underTest.getThirst();
 		assertEquals(check, 0);
@@ -81,7 +81,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldHaveBoredomOf0AfterPlaying25() {
-		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "", 0);
 		underTest.play(25);
 		int check = underTest.getBoredom();
 		assertEquals(check, 0);
@@ -89,7 +89,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldHaveHungerOf10AfterTick() {
-		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "", 0);
 		underTest.tick();
 		int check = underTest.getHunger();
 		assertEquals(check, 10);
@@ -97,7 +97,7 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldHaveHungerOf100AfterTick() {
-		VirtualPet underTest = new VirtualPet("", 100, 100, 100, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 100, 100, 100, false, false, "", 0);
 		underTest.tick();
 		int check = underTest.getHunger();
 		assertEquals(check, 100);
@@ -105,21 +105,21 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void petIsSickShouldBeFalse() {
-		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "", 0);
 		boolean check = underTest.getSickness();
 		assertFalse(check);
 	}
 
 	@Test
 	public void petIsSickShouldBeTrue() {
-		VirtualPet underTest = new VirtualPet("", 0, 0, 0, true, false, "");
+		VirtualPet underTest = new VirtualPet("", 0, 0, 0, true, false, "", 0);
 		boolean check = underTest.getSickness();
 		assertTrue(check);
 	}
 
 	@Test
 	public void petIsSickShouldBeFalseAfterMedicine() {
-		VirtualPet underTest = new VirtualPet("", 0, 0, 0, true, false, "");
+		VirtualPet underTest = new VirtualPet("", 0, 0, 0, true, false, "", 0);
 		underTest.giveMedicine();
 		boolean check = underTest.getSickness();
 		assertFalse(check);
@@ -127,21 +127,21 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldReturnNameJulius() {
-		VirtualPet underTest = new VirtualPet("Julius", 0, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("Julius", 0, 0, 0, false, false, "", 0);
 		String check = underTest.getName();
 		assertEquals(check, "Julius");
 	}
 
 	@Test
 	public void shouldReturnNameTrevor() {
-		VirtualPet underTest = new VirtualPet("Trevor", 0, 0, 0, false, false, "");
+		VirtualPet underTest = new VirtualPet("Trevor", 0, 0, 0, false, false, "", 0);
 		String check = underTest.getName();
 		assertEquals(check, "Trevor");
 	}
 
 	@Test
 	public void shouldReturnDescriptionOfLovesToPlay() {
-		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "Loves to play!");
+		VirtualPet underTest = new VirtualPet("", 0, 0, 0, false, false, "Loves to play!", 0);
 		String check = underTest.getDescription();
 		assertEquals(check, "Loves to play!");
 	}
@@ -179,8 +179,8 @@ public class VirtualPetShelterTest {
 	
 	@Test
 	public void allPetsShouldHaveHungerOf0AfterFeeding() {
-		VirtualPet pet1 = new VirtualPet("Julius", 100, 100, 100, false, false, "Loves to play!");
-		VirtualPet pet2 = new VirtualPet("Trevor", 100, 100, 100, false, false, "Is a little shy.");
+		VirtualPet pet1 = new VirtualPet("Julius", 100, 100, 100, false, false, "Loves to play!", 0);
+		VirtualPet pet2 = new VirtualPet("Trevor", 100, 100, 100, false, false, "Is a little shy.", 0);
 		underTest.add(pet1);
 		underTest.add(pet2);
 		underTest.feedAllPets();
@@ -194,8 +194,8 @@ public class VirtualPetShelterTest {
 	
 	@Test
 	public void allPetsShouldHaveThirstOf0AfterWatering() {
-		VirtualPet pet1 = new VirtualPet("Julius", 100, 100, 100, false, false, "Loves to play!");
-		VirtualPet pet2 = new VirtualPet("Trevor", 100, 100, 100, false, false, "Is a little shy.");
+		VirtualPet pet1 = new VirtualPet("Julius", 100, 100, 100, false, false, "Loves to play!", 0);
+		VirtualPet pet2 = new VirtualPet("Trevor", 100, 100, 100, false, false, "Is a little shy.", 0);
 		underTest.add(pet1);
 		underTest.add(pet2);
 		underTest.waterAllPets();
@@ -209,8 +209,8 @@ public class VirtualPetShelterTest {
 	
 	@Test
 	public void allPetsShouldHaveHungerOf40AfterTick() {
-		VirtualPet pet1 = new VirtualPet("Julius", 30, 100, 100, false, false, "Loves to play!");
-		VirtualPet pet2 = new VirtualPet("Trevor", 30, 100, 100, false, false, "Is a little shy.");
+		VirtualPet pet1 = new VirtualPet("Julius", 30, 100, 100, false, false, "Loves to play!", 0);
+		VirtualPet pet2 = new VirtualPet("Trevor", 30, 100, 100, false, false, "Is a little shy.", 0);
 		underTest.add(pet1);
 		underTest.add(pet2);
 		underTest.tick();

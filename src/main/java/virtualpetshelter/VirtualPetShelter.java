@@ -60,5 +60,32 @@ public class VirtualPetShelter {
 			System.out.println(pet.getName() + "\t\t" + pet.getDescription());
 		}
 	}
+	
+	public boolean checkPetName(String enteredName) {
+		Collection<VirtualPet> petNames = pets.values();
+		for (VirtualPet pet : petNames) {
+			if (pet.getName().equals(enteredName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void havok() {
+		Collection<VirtualPet> allPets = pets.values();
+		for (VirtualPet pet : allPets) {
+			pet.randomizeAction();
+			if (pet.getRandomizedAction() < 34) {
+				System.out.println(pet.getName() + " decides to perform DEATHROLL!");
+				pet.play(40);
+			} else if (pet.getRandomizedAction() > 34 && pet.getRandomizedAction() < 67) {
+				System.out.println(pet.getName() + " decides to get a snack.");
+				pet.feed(40);
+			} else {
+				System.out.println(pet.getName() + " decides to get a drink.");
+				pet.water(40);
+			}
+		}
+	}
 
 }
