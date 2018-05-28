@@ -71,7 +71,7 @@ public class VirtualPetShelter {
 		return false;
 	}
 	
-	public void havok() {
+	public void havoc() {
 		Collection<VirtualPet> allPets = pets.values();
 		for (VirtualPet pet : allPets) {
 			pet.randomizeAction();

@@ -169,7 +169,7 @@ public class VirtualPetShelterApp {
 				System.out.println("You have chosen to release all pets!");
 				String endHavok = "";
 				while (!endHavok.equalsIgnoreCase("y")) {
-					myPetShelter.havok();
+					myPetShelter.havoc();
 					System.out.println();
 					System.out.println("Would you like to put the pets away (\"y\"/\"n\")?");
 					endHavok = input.nextLine();
